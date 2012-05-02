@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function read_suite() {
+    echo "<testsuite> name to record?"
+    read testsuite
+}
+
+testsuite=${1}
+[ ${testsuite} ] || read_suite
+[ -e ${testsuite}.conf ] && { echo "aborting, suite <${testsuite}> already exists!"; exit 1; }
+echo "recording: ${testsuite}"
+
+../bin/fl-record -p 8091 ${testsuite}
