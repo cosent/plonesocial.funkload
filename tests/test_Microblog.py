@@ -51,25 +51,13 @@ class Microblog(FunkLoadTestCase):
         #                                                   'members')
 
     def test_microblog(self):
-        # The description should be set in the configuration file
-        server_url = self.server_url
-        # begin of test ---------------------------------------------
+        for i in xrange(100):
+            self.hit_microblog()
 
-        # /tmp/tmpTJKroN_funkload/watch0081.request
+    def hit_microblog(self):
+        server_url = self.server_url
         self.get(server_url + "/Plone",
             description="Get /Plone")
-#        # /tmp/tmpTJKroN_funkload/watch0127.request
-#        self.post(server_url + "/Plone/kss_z3cform_inline_validation?kukitTimeStamp=1335969520379", params=[
-#            ['formname', 'activitystream_view'],
-#            ['fieldname', 'form.widgets.text'],
-#            ['value', 'Adding a microblog comment.'],
-#            ['form.widgets.in_reply_to', ''],
-#            ['form.widgets.author_name', ''],
-#            ['form.widgets.author_email', ''],
-#            ['form.widgets.text', 'Adding a microblog comment.'],
-#            ['form.widgets.user_notification:list', 'selected']],
-#            description="Post /Plone/kss_z3cform_inline_validation")
-        # /tmp/tmpTJKroN_funkload/watch0128.request
         self.post(server_url + "/Plone/activitystream_view", params=[
             ['form.widgets.in_reply_to', ''],
             ['form.widgets.author_name', ''],
@@ -78,8 +66,6 @@ class Microblog(FunkLoadTestCase):
             ['form.widgets.user_notification:list', 'selected'],
             ['form.buttons.status', 'Comment']],
             description="Post /Plone/activitystream_view")
-
-        # end of test -----------------------------------------------
 
     def tearDown(self):
         """Setting up test."""
