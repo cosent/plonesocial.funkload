@@ -2,7 +2,10 @@ RIPE Funkload
 =============
 
 This installation is used for black-box (from the outside) http testing
-of RIPE Plone services.
+of plonesocial.
+
+Status: incomplete, work in progress.
+
 
 Functionality provided:
 -----------------------
@@ -14,40 +17,30 @@ Functionality provided:
 Not every functional test can be parallelized safely into a load test.
 
 
+INSTALLATION
+============
+
+See Makefile. 
+
+System dependencies: gnuplot. 
+
+Additional dependencies: tcpwatch.
+
+
 DEVELOPMENT
 ===========
 
-# as root, for hardy
-
-make predepends
-
-# as normal user
-
-hardy)gyst@athena:~/ripe.funkload$ make devel
-
+See separate Makefile in ./tests/
 
 Recording of tests:
 -------------------
 
 # start plone
 
-(hardy)gyst@athena:~/ripe.labs$ bin/instance start
-
-http://localhost:8090/manage
-
-# add Plone site 'labstest' with the following extension profile:
-      RIPE Labs: -tests- (integration tests: policy setup)
-      RIPE Labs: -tests- (full local content)
-
-http://localhost:8090/labstest/@@manage-portlets
-# configure tag cloud: sizes=6 count=20 states=published
-# keep refresh=3600
-
-
 # record a testsuite 
 
-(hardy)gyst@athena:~/ripe.funkload$ cd tests/
-(hardy)gyst@athena:~/ripe.funkload/tests$ ./record anon_readonly
+gyst@athena:~/plonesocial.funkload$ cd tests/
+gyst@athena:~/plonesocial.funkload/tests$ ./record anon_readonly
 
 # configure your browser to use localhost:8091 as proxy
 # disable all browser caching
@@ -58,11 +51,7 @@ http://localhost:8090/labstest/@@manage-portlets
 
 # 3) edit the new test suite
 
-  # move the siteroot path to the configuration
-  sed -i -e 's#/labstest##g' test_AnonReadonly.py
-  sed -i -e 's#:8090#:8090/labstest#g' Anonreadonly.conf
-
-  # remove all external URL calls (TweetMeme etc)!
+  # remove all external URL calls
 
 # 4) test and re-edit until it works
 
@@ -76,7 +65,7 @@ http://localhost:8090/labstest/@@manage-portlets
 
 # 7) clean up the development test output (in /tests/ !)
 
-hardy)gyst@athena:~/ripe.funkload/tests$ make clean
+gyst@athena:~/plonesocial.funkload/tests$ make clean
 
 # 8) add and commit new testsuite to git
 
@@ -87,31 +76,6 @@ Running tests and reports:
 --------------------------
 
 # cd tests
-hardy)gyst@athena:~/ripe.funkload/tests$ make test
-hardy)gyst@athena:~/ripe.funkload/tests$ make bench
-hardy)gyst@athena:~/ripe.funkload/tests$ make report
-
-
-
-PRODUCTION
-==========
-
-
-# as root, for hardy
-
-make predepends ## TODO: centos
-
-# as normal user
-
-hardy)gyst@athena:~/ripe.funkload$ make prod
-
-# edit tests/*conf to reflect server url
-
-Running tests and reports:
---------------------------
-
-# cd tests
-hardy)gyst@athena:~/ripe.funkload/tests$ make test
-hardy)gyst@athena:~/ripe.funkload/tests$ make bench
-hardy)gyst@athena:~/ripe.funkload/tests$ make report
-
+gyst@athena:~/plonesocial.funkload/tests$ make test
+gyst@athena:~/plonesocial.funkload/tests$ make bench
+gyst@athena:~/plonesocial.funkload/tests$ make report
