@@ -17,8 +17,17 @@ class Microblog(FunkLoadTestCase):
         self.logd("setUp")
         self.server_url = self.conf_get('main', 'url')
 
+    def test_noop(self):
+        self.get(self.server_url + '/Plone/@@microblog_funkload?noop=1')
+
     def test_microblog(self):
         self.get(self.server_url + '/Plone/@@microblog_funkload')
+
+    def test_batch10(self):
+        self.get(self.server_url + '/Plone/@@microblog_funkload?batch10=1')
+
+    def test_dummy(self):
+        self.get(self.server_url + '/Plone/@@microblog_funkload?dummy')
 
     def tearDown(self):
         """Setting up test."""
