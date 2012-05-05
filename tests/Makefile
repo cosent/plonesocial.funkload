@@ -9,7 +9,7 @@ record:
 
 # test
 
-test: test_home test_microblog
+test: test_microblog
 
 test_home:
 	../bin/fl-run-test test_Home.py
@@ -19,7 +19,7 @@ test_microblog:
 
 # bench
 
-bench: bench_home bench_microblog
+bench: bench_microblog
 
 bench_home:
 	../bin/fl-run-bench ./test_Home.py Home.test_home || exit 0
@@ -29,7 +29,7 @@ bench_microblog:
 
 # report
 
-report: store report_home report_microblog
+report: store report_microblog
 
 report_home: 
 	@../bin/fl-build-report --html -o reports results/home-bench.xml
