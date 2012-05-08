@@ -7,7 +7,7 @@ import unittest
 from funkload.FunkLoadTestCase import FunkLoadTestCase
 
 
-class Microblog(FunkLoadTestCase):
+class Batch1000(FunkLoadTestCase):
     """
     Test ZODB insertion via bare helper view.
     """
@@ -17,8 +17,8 @@ class Microblog(FunkLoadTestCase):
         self.logd("setUp")
         self.server_url = self.conf_get('main', 'url')
 
-    def test_microblog(self):
-        self.get(self.server_url + '/Plone/@@microblog_funkload')
+    def test_batch1000(self):
+        self.get(self.server_url + '/Plone/@@microblog_funkload?batch=1000')
 
     def tearDown(self):
         """Setting up test."""

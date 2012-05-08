@@ -18,7 +18,7 @@ class Batch100(FunkLoadTestCase):
         self.server_url = self.conf_get('main', 'url')
 
     def test_batch100(self):
-        self.get(self.server_url + '/Plone/@@microblog_funkload?batch100')
+        self.get(self.server_url + '/Plone/@@microblog_funkload?batch=100')
 
     def tearDown(self):
         """Setting up test."""
