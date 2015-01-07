@@ -26,6 +26,17 @@ System dependencies: gnuplot.
 
 Additional dependencies: tcpwatch.
 
+Alternatively, use the provided docker.io::
+
+    # compile the docker container
+    make docker-build
+
+    # enter the docker container
+    make docker-run
+
+    # run the buildout
+    make
+
 
 RUNNING THE BENCH
 =================
