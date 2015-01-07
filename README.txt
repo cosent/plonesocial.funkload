@@ -1,5 +1,5 @@
-RIPE Funkload
-=============
+Plonesocial Funkload
+====================
 
 This installation is used for black-box (from the outside) http testing
 of plonesocial.
