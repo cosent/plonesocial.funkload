@@ -4,13 +4,11 @@ Plonesocial Funkload
 This installation is used for black-box (from the outside) http testing
 of plonesocial.
 
-Status: incomplete, work in progress.
-
 WARNING
 -------
 
-Do not install this package in your production site. This opens a security hole.
-This product is intended for testing development installations only!
+| Do not install this package in your production site. This opens a security hole.
+| This product is intended for testing development installations only!
 
 
 Functionality provided:
@@ -90,33 +88,26 @@ gyst@athena:~/plonesocial.funkload/tests$ ./record anon_readonly
 
 # 2) ^C to break the test recorder
 
-# 3) edit the new test suite
+# 3) edit the new test suite::
 
   # remove all external URL calls
 
-# 4) test and re-edit until it works
+# 4) test and re-edit until it works::
 
-../bin/fl-run-test test_AnonReadonly.py 
+  ../bin/fl-run-test test_AnonReadonly.py 
 
 # 5) add the test suite to the Makefile test target
 
-# 6) if applicable: add the new suite to the Makefile bench target
+# 6) if applicable: add the new suite to the Makefile bench target::
 
-../bin/fl-run-bench -c1:2:5 ./test_AnonReadonly.py AnonReadonly.test_anon_readonly
+  ../bin/fl-run-bench -c1:2:5 ./test_AnonReadonly.py AnonReadonly.test_anon_readonly
 
-# 7) clean up the development test output (in /tests/ !)
+# 7) clean up the development test output (in /tests/ !)::
 
-gyst@athena:~/plonesocial.funkload/tests$ make clean
+  gyst@athena:~/plonesocial.funkload/tests$ make clean
 
-# 8) add and commit new testsuite to git
+# 8) add and commit new testsuite to git::
 
-git add .
-git commit -a -m 'new test suite: anon_readonly'
+  git add .
+  git commit -a -m 'new test suite: anon_readonly'
 
-Running tests and reports:
---------------------------
-
-# cd tests
-gyst@athena:~/plonesocial.funkload/tests$ make test
-gyst@athena:~/plonesocial.funkload/tests$ make bench
-gyst@athena:~/plonesocial.funkload/tests$ make report
