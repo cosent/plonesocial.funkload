@@ -6,6 +6,12 @@ of plonesocial.
 
 Status: incomplete, work in progress.
 
+WARNING
+-------
+
+Do not install this package in your production site. This opens a security hole.
+This product is intended for testing development installations only!
+
 
 Functionality provided:
 -----------------------
@@ -41,22 +47,19 @@ Alternatively, use the provided docker.io::
 RUNNING THE BENCH
 =================
 
-All of the below assumes you already have a plonesocial enabled site
-running at localhost:9050/Plone
+The installation step above provides you with a Plone build.
+Start Plone::
 
-Switch plonesocial.microblog into the 'funkload' branch.
+      bin/instance start
 
-       gyst@sirius:plonesocial.microblog$ git checkout funkload
-
-Start your plonesocial instance
-
-      gyst@sirius:plonesocial.buildout$ bin/instance fg
+Create a Plone site.
+Install the 'PloneSocial Microblog' add-on.
 
 You now have a @@microblog_funkload helper view.
 
       firefox http://localhost:9050/Plone/@@microblog_funkload
 
-Run the bench
+Run the bench::
 
      gyst@sirius:plonesocial.funkload$ cd tests
      gyst@sirius:tests$ make
