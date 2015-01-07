@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ploneintranet.suite">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- Include configuration for dependencies listed in setup.py -->
+  <includeDependencies package="." />
+
+<!--
+  <genericsetup:registerProfile
+      name="default"
+      title="Plone Intranet: Suite"
+      directory="profiles/default"
+      description="Installs the full suite of PloneIntranet packages"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+-->
+
+  <!-- -*- extra stuff goes here -*- -->
+  
+</configure>

@@ -32,7 +32,8 @@ test:
 	@cd tests && make test
 
 clean:
-	cd tests && make clean
+	@rm -rf .virtualenv .mr.developer.cfg bin/*
+	@cd tests && make clean
 	@echo "To nuke all scripts:  make cleanyesreally"
 
 cleanyesreally:
