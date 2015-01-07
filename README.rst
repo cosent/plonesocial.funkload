@@ -62,7 +62,7 @@ You now have a @@microblog_funkload helper view.
 Run the bench::
 
      gyst@sirius:plonesocial.funkload$ cd tests
-     gyst@sirius:tests$ make
+     gyst@sirius:tests$ make all
 
 Finally, point your browser at the ./tests/reports/ directory
 to read the results of the various benches. YMMV.
